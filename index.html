@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utsav Pipersaniya — Backend, Data &amp; AI Engineer</title>
+<meta name="description" content="Backend, data and AI engineer. ETL pipelines, RAG over pgvector, and a Redis-authoritative bidding engine. Live product at drops.raritaclub.com.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Jabalpur, India · Open to remote across India, or hybrid in Pune / Indore / Gurugram</p>
+    <h1>Utsav Pipersaniya</h1>
+    <p class="lede">
+      I build the parts of a system that have to stay correct when nobody is watching:
+      <strong>ETL pipelines</strong> that run unattended, <strong>bidding engines</strong>
+      that cannot double-count under concurrency, and <strong>AI features</strong> that
+      fail closed instead of hallucinating into a database.
+    </p>
+    <p class="sub">
+      Backend Engineer at <strong>Sustainext</strong> since December 2023 — an enterprise
+      ESG and sustainability reporting platform. Python, Django, PostgreSQL, Redis, Celery.
+    </p>
+    <nav class="links" aria-label="Contact">
+      <a class="btn primary" href="https://drops.raritaclub.com" rel="noopener">View live product ↗</a>
+      <a class="btn" href="mailto:upipersaniya@gmail.com">upipersaniya@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="work">
+
+  <section>
+    <h2>What I work on</h2>
+    <div class="grid three">
+      <article class="card">
+        <h3>Data engineering</h3>
+        <p>Automated extract–transform–load pipelines, data modelling, deduplication and
+        entity resolution, and the SQL tuning that keeps them fast. PostgreSQL, pandas,
+        scheduled orchestration.</p>
+      </article>
+      <article class="card">
+        <h3>Backend systems</h3>
+        <p>REST and WebSocket APIs, asynchronous processing, caching, and correctness under
+        concurrency. 100+ production endpoints delivered. Django, DRF, Celery, Redis.</p>
+      </article>
+      <article class="card">
+        <h3>Applied AI</h3>
+        <p>Retrieval-augmented generation over pgvector, structured model output, tool use
+        over live data, and the cost, latency and failure handling that decide whether an
+        AI feature survives real users.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sustainext <span class="tag">Dec 2023 — present</span></h2>
+    <p class="section-lede">
+      Enterprise ESG and sustainability reporting platform. I own several distinct pieces
+      of it rather than a single service.
+    </p>
+
+    <div class="grid two">
+      <article class="card">
+        <h3>Automated ETL pipeline</h3>
+        <p>Extracts from an external third-party source, transforms into our schema, and
+        loads into PostgreSQL — unattended, on a Celery Beat schedule, thousands of records
+        per run. I built the transformation and data-quality layer around it: type coercion,
+        normalization, record validation, and handling of malformed or partial source data
+        so a bad upstream payload never corrupts the load.</p>
+      </article>
+      <article class="card">
+        <h3>Analysis engine</h3>
+        <p>The layer that turns loaded data into reported figures — automated emission
+        calculation and aggregation across reporting periods, entities and categories,
+        feeding the disclosures customers actually publish.</p>
+      </article>
+      <article class="card">
+        <h3>Sustainext Chat — production RAG</h3>
+        <p>An assistant that answers sustainability questions <em>and</em> questions about
+        the customer's own data. Retrieval-augmented generation over <strong>pgvector</strong>
+        in PostgreSQL with <strong>OpenAI</strong> models — but it goes past document RAG
+        and queries live platform data, so answers reflect real records rather than a static
+        corpus. Non-technical users get natural-language access to their own reporting
+        dataset. Orchestration is written directly against the provider SDK, which keeps
+        latency and token cost under direct control.</p>
+      </article>
+      <article class="card">
+        <h3>Performance</h3>
+        <p>Two results I measured before and after, not estimated:
+        <strong>~50% lower API response times</strong> through PostgreSQL indexing, removing
+        N+1 access patterns and ORM tuning; and <strong>~60% lower runtime</strong> on
+        long-running workloads by restructuring them onto a Celery worker fleet backed by
+        Redis. I also built the platform's Redis caching layer and its invalidation
+        strategy.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>The bidding engine</h2>
+    <p class="section-lede">
+      The piece of my own work I'd most want to be asked about. Built for Rarità, a
+      real-time auction marketplace.
+    </p>
+
+    <div class="prose">
+      <p><strong>The problem.</strong> A hot auction takes many concurrent bids per second.
+      Writing each one to PostgreSQL on the request path makes the database the bottleneck,
+      and doing read-modify-write on a shared price from multiple workers lets two bids
+      interleave into an inconsistent state — two bidders can both "win" at the same price.</p>
+
+      <p><strong>The approach.</strong> Authoritative auction state — current price, highest
+      bidder, bid count — lives in a Redis hash rather than the database. Every bid goes
+      through a <strong>single atomic Lua script</strong> that validates and accepts it
+      inside Redis, so the check and the write cannot be split by another bid. The script
+      only accepts a bid that strictly raises the current price, which makes the most
+      recently accepted bid the winner by definition.</p>
+
+      <p><strong>Money.</strong> Lua numbers are doubles, so currency is held as
+      <strong>integer paise</strong>. Every amount the platform handles stays well inside
+      2<sup>53</sup>, and the arithmetic is exact.</p>
+
+      <p><strong>Getting it into Postgres without losing anything.</strong> Accepted bids
+      append to a per-listing Redis buffer, and a periodic Celery task drains them to
+      PostgreSQL in batches. Each bid carries a <strong>monotonic per-listing sequence
+      number</strong>, and the state hash tracks how far persistence has got. Re-draining
+      the same buffer is therefore a no-op — so a crash between the database commit and the
+      buffer trim can never double-insert. Every auction-close path force-drains the buffer
+      before deciding a winner, reading the per-listing buffer directly rather than trusting
+      the dirty set, so a close is never at the mercy of the periodic drain's timing.</p>
+
+      <p><strong>The escape hatch.</strong> The whole engine sits behind a feature flag.
+      Turn it off and every caller falls back to the original synchronous database path.
+      A performance optimization that cannot be switched off is a liability.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected work</h2>
+
+    <div class="grid two">
+      <article class="card feature">
+        <h3>RaritaDrops <a class="inline-link" href="https://drops.raritaclub.com" rel="noopener">live ↗</a></h3>
+        <p class="stack">Django · Channels · Celery · Redis · PostgreSQL · Next.js 15 · React 19 · TanStack Query</p>
+        <p>A live real-time drop-room auction platform, built and operated end to end —
+        architecture, implementation, deployment and ongoing maintenance, solo. Instant room
+        creation, bulk item upload, a real-time bidding leaderboard, Buy-It-Now, and a
+        room-end summary with post-sale settlement analytics and Excel export for operators.</p>
+      </article>
+
+      <article class="card">
+        <h3>Catalogue ETL &amp; entity resolution</h3>
+        <p class="stack">Python · PostgreSQL · Celery Beat</p>
+        <p>A CSV-to-database importer with a category-agnostic schema: core columns map to
+        first-class fields, everything else folds into a JSON attributes column, so a new
+        source format loads without a migration. Identity is a <strong>hashed dedup key</strong>
+        derived from normalized columns, so the bulk importer and the incremental monthly
+        fetcher agree on what counts as the same record and re-running a load is idempotent.
+        Matching is exact-key first, then a PostgreSQL <strong>trigram similarity</strong>
+        fallback bucketed by brand, scale and packaging — so variant spellings of one item
+        resolve to a single row.</p>
+      </article>
+
+      <article class="card">
+        <h3>Two-stage AI vision &amp; valuation</h3>
+        <p class="stack">Python · Gemini · OpenAI · Claude · PostgreSQL</p>
+        <p>Stage 1 extracts a structured catalogue card from user photos with no pricing
+        involved; Stage 2 runs a separate web-search-grounded valuation against sold
+        comparables. Splitting them stopped price speculation leaking backwards into
+        identification. The provider is chosen by configuration behind one interface, so the
+        model vendor is a setting rather than a rewrite. Output is schema-constrained JSON
+        with parsing, sanitization, price validation and retry with backoff, so malformed or
+        hallucinated output fails closed instead of reaching the database. A valuation cache
+        keyed on item identity means two users scanning the same item share one expensive
+        grounded call.</p>
+      </article>
+
+      <article class="card">
+        <h3>Knowledge-base support agent</h3>
+        <p class="stack">Python · Gemini · Celery</p>
+        <p>An AI first responder on support conversations, running off the request thread.
+        Grounded strictly on a cached knowledge base built from the FAQ table and legal
+        documents, with a bounded prompt and bounded history to keep token cost predictable.
+        It returns a structured <code>{answer, escalate}</code> decision and hands off to a
+        human automatically for anything account-specific, financial or sensitive — the
+        safety boundary is enforced by the schema, not merely requested in the prompt.</p>
+      </article>
+
+      <article class="card">
+        <h3>Time-decayed trending</h3>
+        <p class="stack">Redis · Django · PostgreSQL</p>
+        <p>Lifetime view counters mean a listing that collected views over three weeks
+        always beats one that collected the same number yesterday. This keeps rolling
+        counters in <strong>one Redis hash per hour</strong> rather than per listing, so
+        recomputing the whole site costs a fixed number of reads no matter how large the
+        catalogue grows. Every entry point swallows its own exceptions: a Redis outage
+        degrades the ranking to "no recent data" and falls back to lifetime rates, and can
+        never break the request that was recording the view.</p>
+      </article>
+
+      <article class="card">
+        <h3>Index options time-series analysis</h3>
+        <p class="stack">pandas · NumPy · Kite Connect API</p>
+        <p>Analysis over <strong>minute-bar Nifty and Sensex data spanning 2018–2025</strong>
+        — roughly 1,800 trading days of intraday series — developing and evaluating a
+        strike-bucket options strategy. Ingests the instrument master via API, filters and
+        types it, and merges it against a constructed strike/expiry frame to resolve
+        tradeable instruments. Indicator state carries forward through a cache between runs
+        so signals stay consistent across restarts.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Stack</h2>
+    <dl class="stack-list">
+      <dt>Languages</dt>
+      <dd>Python · SQL · JavaScript · TypeScript · Lua <span class="muted">(Redis scripting)</span></dd>
+      <dt>Data</dt>
+      <dd>PostgreSQL · pgvector · TimescaleDB · ETL design · data modelling · deduplication &amp; entity resolution · query optimization &amp; indexing · pandas · NumPy</dd>
+      <dt>Backend</dt>
+      <dd>Django · Django REST Framework · FastAPI · Django Channels · Celery · Celery Beat · Redis · REST · WebSockets · JWT auth</dd>
+      <dt>AI</dt>
+      <dd>RAG · embeddings · vector search · OpenAI API · Gemini API · structured output · tool calling · prompt design · cost &amp; quota control</dd>
+      <dt>Infrastructure</dt>
+      <dd>Docker · Linux · Nginx · Gunicorn · Google Cloud Platform · Azure Blob Storage · Cloudflare · Git · Sentry</dd>
+      <dt>Frontend</dt>
+      <dd>React · Next.js · React Native (Expo) · Tailwind CSS</dd>
+    </dl>
+    <p class="note">
+      What I don't claim: no LangChain or LlamaIndex, and no model training — I build
+      against provider SDKs with my own orchestration. No Kubernetes or Terraform. No
+      Airflow, dbt or Spark. No production Java or Go. I'd rather state a gap than have it
+      found in a screening call.
+    </p>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <p class="prose">
+      B.Tech, Gyan Ganga Institute of Technology and Sciences, 2023 — CGPA 8.34.
+      Data Analytics Virtual Internship (Trainity, 2023). Technology Virtual Experience
+      Program (Deloitte via Forage, 2023).
+    </p>
+    <p class="note">
+      Source code for the work above lives in private repositories, so this page describes
+      the systems rather than linking them. The one thing you can go and use right now is
+      <a href="https://drops.raritaclub.com" rel="noopener">drops.raritaclub.com</a>.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <a href="mailto:upipersaniya@gmail.com">upipersaniya@gmail.com</a> ·
+      <a href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">linkedin.com/in/utsavpipersaniya</a> ·
+      <a href="https://drops.raritaclub.com" rel="noopener">drops.raritaclub.com</a>
+    </p>
+    <p class="muted">Open to remote roles across India, and hybrid or on-site in Pune, Indore or Gurugram. 30-day notice.</p>
+  </div>
+</footer>
+
+</body>
+</html>
