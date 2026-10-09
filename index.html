@@ -31,6 +31,7 @@
       <a href="#shipped"><b>GET</b> /shipped</a>
       <a href="#contact"><b>GET</b> /hire</a>
     </nav>
+    <a class="btn hot sm hire-top" href="#contact">Hire me</a>
     <button class="theme-btn" id="theme" type="button" aria-label="Toggle dark mode">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
     </button>
@@ -57,7 +58,7 @@
       <div class="cta">
         <a class="btn hot" href="#bids">Break the bid engine ↓</a>
         <a class="btn" href="https://drops.raritaclub.com" rel="noopener">Live product ↗</a>
-        <a class="btn" href="mailto:upipersaniya@gmail.com">Email me</a>
+        <a class="btn solid" href="#contact">Hire me</a>
       </div>
     </div>
 
@@ -447,20 +448,57 @@ redis.call(<span class="s">'RPUSH'</span>, KEYS[2], cjson.encode({seq = seq, bid
 
 </main>
 
-<!-- ═══ Contact ══════════════════════════════════════════════════════════ -->
+<!-- ═══ Contact / hire ═══════════════════════════════════════════════════ -->
 <footer class="contact" id="contact">
-  <div class="wrap">
-    <p class="route"><b>GET</b> /hire · 200 OK</p>
-    <a class="big-mail" href="mailto:upipersaniya@gmail.com">upipersaniya<br>@gmail.com</a>
-    <div class="contact-meta">
-      <span>Available immediately</span>
-      <span>Remote across India · hybrid in Pune, Indore or Gurugram</span>
-      <a href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">LinkedIn ↗</a>
+  <div class="wrap hire-grid">
+    <div>
+      <p class="route"><b>POST</b> /hire · <span id="views">200 OK</span></p>
+      <h2 class="hire-h">Hiring? Send one request.</h2>
+      <dl class="facts">
+        <dt>status</dt><dd><span class="pulse" aria-hidden="true"></span> available immediately</dd>
+        <dt>roles</dt><dd>Backend · Data · AI engineer</dd>
+        <dt>engagement</dt><dd>Full-time, or freelance / contract</dd>
+        <dt>location</dt><dd>Remote across India · hybrid in Pune, Indore or Gurugram</dd>
+        <dt>experience</dt><dd>2 yrs 8 mos at Sustainext + freelance at Rarità since Jul 2026</dd>
+      </dl>
+      <div class="contact-meta">
+        <a href="mailto:upipersaniya@gmail.com">upipersaniya@gmail.com</a>
+        <a href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">LinkedIn ↗</a>
+      </div>
     </div>
+
+    <form class="hire-form" id="hire" action="https://formsubmit.co/upipersaniya@gmail.com" method="POST">
+      <fieldset class="kind">
+        <legend>What's this about?</legend>
+        <label><input type="radio" name="kind" value="Full-time role" checked><span>Full-time role</span></label>
+        <label><input type="radio" name="kind" value="Freelance / contract"><span>Freelance / contract</span></label>
+        <label><input type="radio" name="kind" value="Just saying hi"><span>Just saying hi</span></label>
+      </fieldset>
+      <div class="two">
+        <label class="field"><span>Your name</span><input name="name" required autocomplete="name"></label>
+        <label class="field"><span>Work email</span><input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="two">
+        <label class="field"><span>Company <i>optional</i></span><input name="company" autocomplete="organization"></label>
+        <label class="field"><span>Role or project <i>optional</i></span><input name="role" placeholder="e.g. Backend Engineer, Django"></label>
+      </div>
+      <label class="field"><span>Anything else <i>optional</i></span><textarea name="message" rows="3" placeholder="JD link, timeline, or a line about the problem"></textarea></label>
+      <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" value="Portfolio: new hire request">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="send-row">
+        <button class="btn hot" type="submit" id="hire-send">Send request →</button>
+        <p class="form-status" id="hire-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+  <div class="wrap">
     <p class="fine">B.Tech, Gyan Ganga Institute of Technology and Sciences, 2023 (CGPA 8.34) · Jabalpur, India. Source for the work above is in private repositories, so this page shows the systems instead of linking them. The demos are written from scratch for this page.</p>
   </div>
 </footer>
 
 <script src="app.js" defer></script>
+<script data-goatcounter="https://utsavp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

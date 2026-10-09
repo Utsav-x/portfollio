@@ -630,4 +630,37 @@
       });
     }
   }
+
+  /* ══ Hire form (FormSubmit, AJAX) + view counter (GoatCounter) ═════ */
+  {
+    const form = $('#hire'), status = $('#hire-status'), send = $('#hire-send');
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      if (form._honey.value) return;               // bot filled the trap
+      send.disabled = true; status.className = 'form-status'; status.textContent = 'POST /hire …';
+      const data = Object.fromEntries(new FormData(form));
+      delete data._honey;
+      try {
+        const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok || String(body.success) === 'false') throw new Error(body.message || res.status);
+        try { window.goatcounter && window.goatcounter.count({ path: 'hire-form-sent', title: data.kind, event: true }); } catch (e) {}
+        form.classList.add('sent');
+        form.innerHTML = `<div class="sent-msg"><code>201 Created</code><b>Thanks, ${data.name.split(' ')[0].replace(/[<>&"]/g, '')}. Request received.</b>
+          <p style="margin:0;color:var(--ink-2)">It's in my inbox now. I'll reply to ${data.email.replace(/[<>&"]/g, '')}.</p></div>`;
+      } catch (e) {
+        send.disabled = false; status.className = 'form-status err';
+        status.innerHTML = 'Couldn’t send that. Email me directly: <a href="mailto:upipersaniya@gmail.com">upipersaniya@gmail.com</a>';
+      }
+    });
+
+    // Public total from GoatCounter; stays "200 OK" if blocked or not enabled yet.
+    const views = $('#views');
+    fetch('https://utsavp.goatcounter.com/counter/TOTAL.json')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((j) => { if (j && j.count) views.textContent = `200 OK · viewed ${j.count} times`; })
+      .catch(() => {});
+  }
 })();
