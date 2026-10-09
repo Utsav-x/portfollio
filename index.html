@@ -1,273 +1,466 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Utsav Pipersaniya — Backend, Data &amp; AI Engineer</title>
-<meta name="description" content="Backend, data and AI engineer. ETL pipelines, RAG over pgvector, and a Redis-authoritative bidding engine. Live product at drops.raritaclub.com.">
+<title>Utsav Pipersaniya · Backend, Data &amp; AI Engineer</title>
+<meta name="description" content="Backend, data and AI engineer. A Redis-authoritative bidding engine, idempotent ETL with entity resolution, and production RAG over pgvector. Live products at drops.raritaclub.com and raritaclub.com.">
+<meta property="og:title" content="Utsav Pipersaniya · Backend, Data & AI Engineer">
+<meta property="og:description" content="Systems that stay correct when nobody is watching. Try the bid-race simulator.">
+<meta property="og:image" content="assets/shots/drops-desktop.webp">
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23d9372b'/><circle cx='16' cy='16' r='5' fill='%23fff'/></svg>">
+<script>
+  document.documentElement.classList.remove('no-js');
+  try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 </head>
 <body>
 
-<a class="skip" href="#work">Skip to work</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="hero">
+<header class="bar">
   <div class="wrap">
-    <p class="eyebrow">Jabalpur, India · Open to remote across India, or hybrid in Pune / Indore / Gurugram</p>
-    <h1>Utsav Pipersaniya</h1>
-    <p class="lede">
-      I build the parts of a system that have to stay correct when nobody is watching:
-      <strong>ETL pipelines</strong> that run unattended, <strong>bidding engines</strong>
-      that cannot double-count under concurrency, and <strong>AI features</strong> that
-      fail closed instead of hallucinating into a database.
-    </p>
-    <p class="sub">
-      Backend Engineer at <strong>Sustainext</strong> since December 2023 — an enterprise
-      ESG and sustainability reporting platform. Python, Django, PostgreSQL, Redis, Celery.
-    </p>
-    <nav class="links" aria-label="Contact">
-      <a class="btn primary" href="https://drops.raritaclub.com" rel="noopener">View live product ↗</a>
-      <a class="btn" href="mailto:upipersaniya@gmail.com">upipersaniya@gmail.com</a>
-      <a class="btn" href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">LinkedIn</a>
+    <a class="mark" href="#top">utsav<span>.</span>p</a>
+    <nav class="routes" aria-label="Sections">
+      <a href="#sustainext"><b>GET</b> /work</a>
+      <a href="#bids"><b>POST</b> /bids</a>
+      <a href="#etl"><b>PUT</b> /etl</a>
+      <a href="#ai"><b>POST</b> /ask</a>
+      <a href="#shipped"><b>GET</b> /shipped</a>
+      <a href="#contact"><b>GET</b> /hire</a>
     </nav>
+    <button class="theme-btn" id="theme" type="button" aria-label="Toggle dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+    </button>
   </div>
 </header>
 
-<main class="wrap" id="work">
+<main id="main">
 
-  <section>
-    <h2>What I work on</h2>
-    <div class="grid three">
-      <article class="card">
-        <h3>Data engineering</h3>
-        <p>Automated extract–transform–load pipelines, data modelling, deduplication and
-        entity resolution, and the SQL tuning that keeps them fast. PostgreSQL, pandas,
-        scheduled orchestration.</p>
-      </article>
-      <article class="card">
-        <h3>Backend systems</h3>
-        <p>REST and WebSocket APIs, asynchronous processing, caching, and correctness under
-        concurrency. 100+ production endpoints delivered. Django, DRF, Celery, Redis.</p>
-      </article>
-      <article class="card">
-        <h3>Applied AI</h3>
-        <p>Retrieval-augmented generation over pgvector, structured model output, tool use
-        over live data, and the cost, latency and failure handling that decide whether an
-        AI feature survives real users.</p>
-      </article>
+<!-- ═══ Hero ═════════════════════════════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="status"><span class="pulse" aria-hidden="true"></span> available immediately · remote across India</p>
+      <h1 class="name" aria-label="Utsav Pipersaniya">
+        <span data-split>Utsav</span>
+        <span class="last" data-split>Pipersaniya</span>
+      </h1>
+      <p class="role">Backend, data &amp; AI engineer. I build the parts that have to <em>stay correct</em> when nobody is watching.</p>
+      <p class="lede">
+        ETL that runs unattended, bidding that can't double-count under concurrency, and AI
+        features that fail closed instead of hallucinating into a database. Python, Django,
+        PostgreSQL, Redis, Celery. Most of this page runs: poke it.
+      </p>
+      <div class="cta">
+        <a class="btn hot" href="#bids">Break the bid engine ↓</a>
+        <a class="btn" href="https://drops.raritaclub.com" rel="noopener">Live product ↗</a>
+        <a class="btn" href="mailto:upipersaniya@gmail.com">Email me</a>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <h2>Sustainext <span class="tag">Dec 2023 — present</span></h2>
-    <p class="section-lede">
-      Enterprise ESG and sustainability reporting platform. I own several distinct pieces
-      of it rather than a single service.
-    </p>
-
-    <div class="grid two">
-      <article class="card">
-        <h3>Automated ETL pipeline</h3>
-        <p>Extracts from an external third-party source, transforms into our schema, and
-        loads into PostgreSQL — unattended, on a Celery Beat schedule, thousands of records
-        per run. I built the transformation and data-quality layer around it: type coercion,
-        normalization, record validation, and handling of malformed or partial source data
-        so a bad upstream payload never corrupts the load.</p>
-      </article>
-      <article class="card">
-        <h3>Analysis engine</h3>
-        <p>The layer that turns loaded data into reported figures — automated emission
-        calculation and aggregation across reporting periods, entities and categories,
-        feeding the disclosures customers actually publish.</p>
-      </article>
-      <article class="card">
-        <h3>Sustainext Chat — production RAG</h3>
-        <p>An assistant that answers sustainability questions <em>and</em> questions about
-        the customer's own data. Retrieval-augmented generation over <strong>pgvector</strong>
-        in PostgreSQL with <strong>OpenAI</strong> models — but it goes past document RAG
-        and queries live platform data, so answers reflect real records rather than a static
-        corpus. Non-technical users get natural-language access to their own reporting
-        dataset. Orchestration is written directly against the provider SDK, which keeps
-        latency and token cost under direct control.</p>
-      </article>
-      <article class="card">
-        <h3>Performance</h3>
-        <p>Two results I measured before and after, not estimated:
-        <strong>~50% lower API response times</strong> through PostgreSQL indexing, removing
-        N+1 access patterns and ORM tuning; and <strong>~60% lower runtime</strong> on
-        long-running workloads by restructuring them onto a Celery worker fleet backed by
-        Redis. I also built the platform's Redis caching layer and its invalidation
-        strategy.</p>
-      </article>
+    <div class="trace reveal" aria-label="Interactive request trace through the systems I build">
+      <div class="trace-top">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>trace · pick a request</span>
+      </div>
+      <div class="trace-actions" role="group" aria-label="Request type">
+        <button type="button" data-route="bid" aria-pressed="true">POST /bid</button>
+        <button type="button" data-route="ask" aria-pressed="false">POST /chat/ask</button>
+        <button type="button" data-route="etl" aria-pressed="false">beat: etl.run</button>
+        <button type="button" data-route="view" aria-pressed="false">GET /listing</button>
+      </div>
+      <svg id="trace-svg" viewBox="0 0 640 360" role="img" aria-label="Architecture: browser, Nginx, Django, Channels, Redis, Celery, PostgreSQL, LLM provider and an external data source"></svg>
+      <div class="trace-log" id="trace-log" aria-live="polite"></div>
+      <p class="fine">Hops are the real architecture. Timings are illustrative.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>The bidding engine</h2>
-    <p class="section-lede">
-      The piece of my own work I'd most want to be asked about. Built for Rarità, a
-      real-time auction marketplace.
-    </p>
+<!-- ═══ Sustainext ═══════════════════════════════════════════════════════ -->
+<section class="section" id="sustainext" style="padding-top: clamp(40px, 6vw, 80px)">
+  <div class="wrap ledger-grid">
+    <div class="ledger-side reveal">
+      <p class="route"><b>GET</b> /work/sustainext</p>
+      <h2>Two years and eight months of ESG data.</h2>
+      <span class="when">Backend Engineer · Sustainext · Dec 2023 to Jul 2026</span>
+      <p class="lede">An enterprise ESG and sustainability reporting platform. I owned several distinct pieces of it rather than one service. Tap a row.</p>
 
-    <div class="prose">
-      <p><strong>The problem.</strong> A hot auction takes many concurrent bids per second.
-      Writing each one to PostgreSQL on the request path makes the database the bottleneck,
-      and doing read-modify-write on a shared price from multiple workers lets two bids
-      interleave into an inconsistent state — two bidders can both "win" at the same price.</p>
-
-      <p><strong>The approach.</strong> Authoritative auction state — current price, highest
-      bidder, bid count — lives in a Redis hash rather than the database. Every bid goes
-      through a <strong>single atomic Lua script</strong> that validates and accepts it
-      inside Redis, so the check and the write cannot be split by another bid. The script
-      only accepts a bid that strictly raises the current price, which makes the most
-      recently accepted bid the winner by definition.</p>
-
-      <p><strong>Money.</strong> Lua numbers are doubles, so currency is held as
-      <strong>integer paise</strong>. Every amount the platform handles stays well inside
-      2<sup>53</sup>, and the arithmetic is exact.</p>
-
-      <p><strong>Getting it into Postgres without losing anything.</strong> Accepted bids
-      append to a per-listing Redis buffer, and a periodic Celery task drains them to
-      PostgreSQL in batches. Each bid carries a <strong>monotonic per-listing sequence
-      number</strong>, and the state hash tracks how far persistence has got. Re-draining
-      the same buffer is therefore a no-op — so a crash between the database commit and the
-      buffer trim can never double-insert. Every auction-close path force-drains the buffer
-      before deciding a winner, reading the per-listing buffer directly rather than trusting
-      the dirty set, so a close is never at the mercy of the periodic drain's timing.</p>
-
-      <p><strong>The escape hatch.</strong> The whole engine sits behind a feature flag.
-      Turn it off and every caller falls back to the original synchronous database path.
-      A performance optimization that cannot be switched off is a liability.</p>
+      <div class="measure">
+        <figure class="m reveal" data-after="0.5" style="margin:0">
+          <figcaption>API response time <span>≈50% lower</span></figcaption><p class="fine" style="margin:-4px 0 8px">Postgres indexing, N+1 removal, ORM tuning</p>
+          <div class="bars"><div class="before">before</div><div class="after">after</div></div>
+        </figure>
+        <figure class="m reveal" data-after="0.4" style="margin:0">
+          <figcaption>Long-running workloads <span>≈60% lower</span></figcaption><p class="fine" style="margin:-4px 0 8px">moved onto a Celery + Redis worker fleet</p>
+          <div class="bars"><div class="before">before</div><div class="after">after</div></div>
+        </figure>
+        <p class="fine">Both measured before and after, not estimated.</p>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <h2>Selected work</h2>
+    <ol class="ledger reveal" id="ledger">
+      <li class="open">
+        <button type="button" aria-expanded="true"><span class="n">01</span><span class="t">EZGB ETL pipeline<small>Third-party source to our Postgres, end to end and unattended.</small></span><span class="plus" aria-hidden="true"></span></button>
+        <div class="body"><div>
+          <p>Extract from an external source, transform with pandas and NumPy, load into PostgreSQL on a Celery Beat schedule, thousands of records per run. I built the data-quality layer around it: type coercion, normalization, validation, and handling malformed or partial payloads so a bad upstream response never corrupts a load.</p>
+          <p><span class="flag">It brought in five more clients.</span> Live progress streams to the browser over Server-Sent Events, my call over a short-polling proposal: one long-lived connection instead of a request every few seconds per open tab.</p>
+          <div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Celery Beat</span><span class="chip">SSE</span><span class="chip">PostgreSQL</span></div>
+        </div></div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false"><span class="n">02</span><span class="t">Sustainext Chat<small>Production RAG over pgvector that also reads live platform data.</small></span><span class="plus" aria-hidden="true"></span></button>
+        <div class="body"><div>
+          <p>Answers sustainability questions and questions about the customer's own data. Retrieval over pgvector inside PostgreSQL with OpenAI models, but it goes past document RAG: it queries live records, so answers reflect the real dataset rather than a static corpus. Orchestration is written directly against the provider SDK, which keeps latency and token cost under direct control. <a href="#ai">See how it routes ↓</a></p>
+          <div class="chips"><span class="chip">pgvector</span><span class="chip">OpenAI API</span><span class="chip">tool calling</span><span class="chip">Django</span></div>
+        </div></div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false"><span class="n">03</span><span class="t">In-house emission-factor database<small>A Climatiq-style factor store we own, cutting third-party API spend.</small></span><span class="plus" aria-hidden="true"></span></button>
+        <div class="body"><div>
+          <p>Emission calculations used to call a paid external factor API. I built our own factor database so the hot path resolves factors locally, which reduced third-party API costs and removed a network dependency from every calculation.</p>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">data modelling</span></div>
+        </div></div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false"><span class="n">04</span><span class="t">Analysis engine<small>The layer that turns loaded data into reported figures.</small></span><span class="plus" aria-hidden="true"></span></button>
+        <div class="body"><div>
+          <p>Automated emission calculation and aggregation across reporting periods, entities and categories, feeding the disclosures customers actually publish.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Django ORM</span><span class="chip">SQL</span></div>
+        </div></div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false"><span class="n">05</span><span class="t">Caching, workers, schedules<small>Redis caching layer, a Celery fleet, and Celery Beat cron.</small></span><span class="plus" aria-hidden="true"></span></button>
+        <div class="body"><div>
+          <p>I built the platform's Redis caching layer and its invalidation strategy, moved long-running work onto a Celery worker fleet (the ≈60% above), and run scheduled jobs through Celery Beat.</p>
+          <div class="chips"><span class="chip">Redis</span><span class="chip">Celery</span><span class="chip">Celery Beat</span></div>
+        </div></div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false"><span class="n">06</span><span class="t">100+ REST endpoints, shipped<small>DRF, Azure Blob Storage, Docker, Gunicorn, Nginx, Cloudflare.</small></span><span class="plus" aria-hidden="true"></span></button>
+        <div class="body"><div>
+          <p>Over a hundred production endpoints in Django REST Framework, file storage on Azure Blob, and deployment on Linux behind Nginx and Gunicorn in Docker, fronted by Cloudflare.</p>
+          <div class="chips"><span class="chip">DRF</span><span class="chip">Azure Blob</span><span class="chip">Docker</span><span class="chip">Nginx</span><span class="chip">Cloudflare</span></div>
+        </div></div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-    <div class="grid two">
-      <article class="card feature">
-        <h3>RaritaDrops <a class="inline-link" href="https://drops.raritaclub.com" rel="noopener">live ↗</a></h3>
+<!-- ═══ Bid engine ═══════════════════════════════════════════════════════ -->
+<section class="section drench" id="bids">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="route"><b>POST</b> /listings/42/bids · Rarità · freelance since Jul 2026</p>
+      <h2>Two people bid ₹16,000 at the same millisecond. Who won?</h2>
+      <p class="lede">A hot auction takes many concurrent bids. Read-modify-write on a shared price lets two of them interleave, and both bidders get told they're winning. Run it both ways.</p>
+    </div>
+
+    <div class="sim reveal" id="sim">
+      <div class="sim-controls">
+        <div class="seg" role="group" aria-label="Bid acceptance strategy">
+          <button type="button" data-mode="naive" aria-pressed="false">Naive read-modify-write</button>
+          <button type="button" data-mode="lua" aria-pressed="true">Atomic Lua script</button>
+        </div>
+        <span class="spacer"></span>
+        <button class="btn hot sm" type="button" id="fire">Fire 3 concurrent bids</button>
+        <button class="btn sm" type="button" id="drain" disabled>Drain to Postgres</button>
+        <button class="btn sm" type="button" id="crash" disabled>Crash mid-drain</button>
+        <button class="btn sm" type="button" id="reset">Reset</button>
+      </div>
+
+      <div class="sim-grid">
+        <div class="pane">
+          <h4><span>bidders</span><span>WebSocket</span></h4>
+          <div id="bidders"></div>
+        </div>
+        <div class="pane">
+          <h4><span>redis · HASH listing:42</span><span>authoritative</span></h4>
+          <dl class="kv" id="kv"></dl>
+          <div class="buffer" id="buffer"><span class="lbl">LIST bids:42 (buffer)</span></div>
+        </div>
+        <div class="pane">
+          <h4><span>postgres · bids</span><span id="pg-count">0 rows</span></h4>
+          <table class="rows"><thead><tr><th>seq</th><th>bidder</th><th>amount</th></tr></thead><tbody id="pg"></tbody></table>
+        </div>
+      </div>
+
+      <div class="sim-log" id="sim-log" aria-live="polite"></div>
+      <div class="verdict" id="verdict">Pick a strategy, then fire.</div>
+    </div>
+
+    <div class="lua reveal">
+      <div>
+        <h3 style="font-size:1.6rem; font-stretch:80%; margin-bottom:12px">Check and write in one step.</h3>
+        <p>Every bid runs through a single Lua script inside Redis. Redis executes scripts one at a time, so no other bid can land between the price check and the write. The script only accepts a bid that strictly beats the current price, so the latest accepted bid is the leader by definition.</p>
+        <p class="fine" style="color:inherit; opacity:.8">Simplified sketch of the idea, not the production script.</p>
+      </div>
+<pre><code><span class="c">-- KEYS[1] = listing hash, KEYS[2] = bid buffer</span>
+<span class="k">local</span> price = tonumber(redis.call(<span class="s">'HGET'</span>, KEYS[1], <span class="s">'price_paise'</span>))
+<span class="k">local</span> bid   = tonumber(ARGV[1])            <span class="c">-- integer paise</span>
+<span class="k">if</span> bid &lt;= price <span class="k">then return</span> {0, price} <span class="k">end</span>
+
+<span class="k">local</span> seq = redis.call(<span class="s">'HINCRBY'</span>, KEYS[1], <span class="s">'seq'</span>, 1)
+redis.call(<span class="s">'HSET'</span>, KEYS[1], <span class="s">'price_paise'</span>, bid, <span class="s">'leader'</span>, ARGV[2])
+redis.call(<span class="s">'RPUSH'</span>, KEYS[2], cjson.encode({seq = seq, bid = bid, user = ARGV[2]}))
+<span class="k">return</span> {1, seq}</code></pre>
+    </div>
+
+    <div class="bid-notes reveal">
+      <div><h3>Money is integer paise.</h3><p>Lua numbers are doubles. Holding currency as paise keeps every amount well inside 2<sup>53</sup>, so the arithmetic is exact.</p></div>
+      <div><h3>Postgres gets it in batches.</h3><p>A periodic Celery task drains the buffer. Each bid carries a monotonic per-listing seq and the hash tracks how far persistence has got, so re-draining is a no-op. Try the crash button.</p></div>
+      <div><h3>Closing never trusts timing.</h3><p>Every auction-close path force-drains that listing's buffer before picking a winner, rather than waiting on the periodic drain.</p></div>
+      <div><h3>There's an off switch.</h3><p>The engine sits behind a feature flag. Off, every caller falls back to the original synchronous database path. An optimization you can't switch off is a liability.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ETL ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="etl">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="route"><b>PUT</b> /catalogue/import · idempotent</p>
+      <h2>Seven messy rows. How many real things?</h2>
+      <p class="lede">Rarità's catalogue importer: normalize, hash a dedup key, match exactly first, then fall back to PostgreSQL trigram similarity inside a bucket of brand, scale and packaging. Run it, run it again, and drag the threshold to see the trade-off.</p>
+    </div>
+
+    <div class="etl-wrap reveal">
+      <div class="etl-controls">
+        <button class="btn solid" type="button" id="etl-run">Run import</button>
+        <label class="slider">similarity ≥
+          <input type="range" id="etl-th" min="0.2" max="0.9" step="0.05" value="0.5" aria-describedby="etl-th-out">
+          <output id="etl-th-out">0.50</output>
+        </label>
+        <div class="counters" aria-live="polite">
+          <span>inserted <b id="c-ins">0</b></span>
+          <span>merged <b id="c-mrg">0</b></span>
+          <span>unchanged <b id="c-unc">0</b></span>
+          <span>runs <b id="c-run">0</b></span>
+        </div>
+      </div>
+      <div class="etl-table-wrap">
+        <table class="etl">
+          <thead><tr>
+            <th>raw csv row</th>
+            <th>normalized<small>*_norm keys</small></th>
+            <th>dedup_key<small>sha1 of norm keys</small></th>
+            <th>match<small>exact, then trigram in bucket</small></th>
+            <th>action</th>
+          </tr></thead>
+          <tbody id="etl-body"></tbody>
+        </table>
+      </div>
+      <div>
+        <p class="fine" style="margin-bottom:10px">catalogue entities after load</p>
+        <div class="entities" id="entities"></div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div><h3>New formats, no migration.</h3><p>Core columns map to first-class fields; everything else folds into a JSON attributes column, so a new source format loads without a schema change.</p></div>
+      <div><h3>One identity, two loaders.</h3><p>The bulk importer and the incremental monthly fetcher derive the same dedup key, so they agree on what counts as the same record, and re-running a load changes nothing.</p></div>
+      <div><h3>Buckets keep fuzzy matching honest.</h3><p>Trigram similarity is only compared inside the same brand, scale and packaging. A loose car never merges into a carded one, however similar the names.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI ═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="ai" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="route"><b>POST</b> /chat/ask · Sustainext Chat</p>
+      <h2>Docs, live data, or both.</h2>
+      <p class="lede">A question about a reporting standard needs retrieval. A question about your own emissions needs a database query. Pick one and watch it route.</p>
+    </div>
+
+    <div class="rag reveal">
+      <div class="rag-panel">
+        <div class="rag-q" role="group" aria-label="Example questions">
+          <button type="button" data-q="0" aria-pressed="false">What does GRI 305-2 ask us to disclose?</button>
+          <button type="button" data-q="1" aria-pressed="false">How did our Scope 2 change from Q2 to Q3?</button>
+          <button type="button" data-q="2" aria-pressed="false">Which site drove it, and is that a BRSR item?</button>
+        </div>
+        <ol class="steps" id="rag-steps">
+          <li data-s="embed"><span>Embed the question<code></code></span></li>
+          <li data-s="search"><span>pgvector nearest neighbours<code></code></span></li>
+          <li data-s="tool"><span>Tool call against live platform data<code></code></span></li>
+          <li data-s="llm"><span>Compose a grounded answer<code></code></span></li>
+        </ol>
+        <div class="answer" id="rag-answer" aria-live="polite">Choose a question above.</div>
+      </div>
+      <div class="rag-panel space">
+        <div class="hd"><span>embedding space (2-D projection)</span><span id="rag-k">top-k: 3</span></div>
+        <svg id="rag-svg" viewBox="0 0 400 320" role="img" aria-label="Scatter of document chunks; the closest chunks to the question are highlighted"></svg>
+        <div class="legend"><span><i style="background:oklch(0.78 0.13 29)"></i>GRI</span><span><i style="background:oklch(0.78 0.12 240)"></i>BRSR</span><span><i style="background:oklch(0.8 0.12 150)"></i>methodology notes</span></div>
+      </div>
+    </div>
+    <p class="fine" style="margin-top:12px">Illustrative walkthrough with demo numbers. Not Sustainext's UI or data.</p>
+
+    <div class="agents">
+      <div class="reveal">
+        <p class="route"><b>POST</b> /support/reply · Rarità</p>
+        <h3>The safety boundary lives in the schema.</h3>
+        <p>An AI first responder on support conversations, grounded strictly on a cached knowledge base built from the FAQ table and legal docs, with bounded prompt and history so token cost stays predictable. It must return <code>{answer, escalate}</code>; anything account-specific, financial or sensitive hands off to a human.</p>
+        <div class="seg" role="group" aria-label="Support message" id="sup-seg">
+          <button type="button" data-m="0" aria-pressed="true">“How long does shipping take?”</button>
+          <button type="button" data-m="1" aria-pressed="false">“I was charged twice”</button>
+        </div>
+        <pre class="json" id="sup-json" aria-live="polite"></pre>
+      </div>
+      <div class="reveal">
+        <p class="route"><b>POST</b> /scan · Rarità</p>
+        <h3>Identify first. Price second.</h3>
+        <p>Two-stage vision: stage one extracts a structured catalogue card from photos with no pricing in sight; stage two runs a separate search-grounded valuation against sold comparables. Splitting them stopped price speculation leaking back into identification.</p>
+        <div class="stage">
+          <div><b>stage 1 · vision</b>photos → schema-checked card JSON</div>
+          <span class="arr">→</span>
+          <div><b>stage 2 · grounded</b>sold comps → validated price range</div>
+          <span class="arr">→</span>
+          <div><b>cache</b>keyed on item identity, shared across users</div>
+        </div>
+        <p class="wall">provider = config (Gemini live; OpenAI, Claude behind the same interface) · malformed output fails closed, retries with backoff</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Trending ═════════════════════════════════════════════════════════ -->
+<section class="section" id="trending" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="route"><b>GET</b> /listings?sort=trending</p>
+      <h2>Three weeks of views vs. one good day.</h2>
+      <p class="lede">Lifetime counters mean an old listing always beats yesterday's breakout. Rarità keeps rolling counts in one Redis hash per hour, so recomputing the whole site costs a fixed number of reads however big the catalogue gets. Slide the half-life.</p>
+    </div>
+    <div class="trend-controls reveal">
+      <label class="slider">half-life
+        <input type="range" id="hl" min="0" max="100" value="45" aria-describedby="hl-out">
+        <output id="hl-out">1d</output>
+      </label>
+      <label class="toggle"><input type="checkbox" id="redis-down"> simulate Redis outage</label>
+    </div>
+    <div class="trend reveal">
+      <div class="trend-chart" id="trend-chart"></div>
+      <div class="rank" id="rank">
+        <h4><span>trending now</span><span id="req">GET 200 · 4ms</span></h4>
+        <ol id="rank-list"></ol>
+        <p class="degraded">Redis unreachable. Ranking degrades to lifetime rates; the request that records a view still succeeds. Every entry point swallows its own exceptions.</p>
+        <h4 style="margin-top:6px"><span>lifetime counter would say</span><span></span></h4>
+        <ol id="life-list"></ol>
+      </div>
+    </div>
+    <p class="fine" style="margin-top:12px">Exponential decay shown for illustration; buckets are hourly.</p>
+  </div>
+</section>
+
+<!-- ═══ Shipped ══════════════════════════════════════════════════════════ -->
+<section class="section shipped" id="shipped">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="route"><b>GET</b> /shipped · in production now</p>
+      <h2>Things you can open right now.</h2>
+    </div>
+
+    <div class="stage-shots reveal">
+      <div class="browser">
+        <div class="browser-top">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div class="tabs" role="tablist" aria-label="Live sites">
+            <button role="tab" type="button" aria-selected="true" data-i="0">Drops</button>
+            <button role="tab" type="button" aria-selected="false" data-i="1">Rarità</button>
+            <button role="tab" type="button" aria-selected="false" data-i="2">Rarità · picks</button>
+          </div>
+          <span class="url" id="url">drops.raritaclub.com</span>
+        </div>
+        <div class="viewport" id="viewport">
+          <img class="on" src="assets/shots/drops-desktop.webp" alt="RaritaDrops home: create your own drop room, with a live auction card showing the current bid on a G.I. Joe figure" width="1440" height="900" data-url="drops.raritaclub.com">
+          <img src="assets/shots/club-desktop.webp" alt="Rarità marketplace home: discover and collect rare finds" width="1440" height="900" loading="lazy" data-url="raritaclub.com">
+          <img src="assets/shots/club-desktop-2.webp" alt="Rarità top picks of the week with latest listings" width="1440" height="900" loading="lazy" data-url="raritaclub.com/#picks">
+        </div>
+      </div>
+      <div class="phones" aria-label="Rarità mobile app and Drops on a phone">
+        <div class="phone"><div class="scr" data-cycle>
+          <img class="on" src="assets/shots/phone-home.webp" alt="Rarità Android app home: Claim the rare" width="600" height="1300" loading="lazy">
+          <img src="assets/shots/phone-deals.webp" alt="Rarità app deals feed with a live auction at current bid ₹1,800" width="600" height="1300" loading="lazy">
+          <img src="assets/shots/phone-cards.webp" alt="Rarità app trading cards listings" width="600" height="1300" loading="lazy">
+        </div></div>
+        <div class="phone"><div class="scr" data-cycle>
+          <img class="on" src="assets/shots/drops-mobile.webp" alt="Drops on mobile with a live bid card" width="600" height="1298" loading="lazy">
+          <img src="assets/shots/drops-mobile-how.webp" alt="Drops how it works: create a room, prepare listings, watch the show, get a summary" width="600" height="1298" loading="lazy">
+          <img src="assets/shots/club-mobile.webp" alt="Rarità web on mobile" width="600" height="1298" loading="lazy">
+        </div></div>
+      </div>
+    </div>
+
+    <div class="ship-notes reveal">
+      <div>
+        <h3>RaritaDrops <a href="https://drops.raritaclub.com" rel="noopener">drops.raritaclub.com ↗</a></h3>
+        <p>A real-time drop-room auction platform I built and operate end to end, solo: architecture, implementation, deployment, maintenance. Instant rooms, bulk item upload, a live bidding leaderboard, Buy-It-Now, and a room-end summary with settlement analytics and Excel export.</p>
         <p class="stack">Django · Channels · Celery · Redis · PostgreSQL · Next.js 15 · React 19 · TanStack Query</p>
-        <p>A live real-time drop-room auction platform, built and operated end to end —
-        architecture, implementation, deployment and ongoing maintenance, solo. Instant room
-        creation, bulk item upload, a real-time bidding leaderboard, Buy-It-Now, and a
-        room-end summary with post-sale settlement analytics and Excel export for operators.</p>
-      </article>
-
-      <article class="card">
-        <h3>Catalogue ETL &amp; entity resolution</h3>
-        <p class="stack">Python · PostgreSQL · Celery Beat</p>
-        <p>A CSV-to-database importer with a category-agnostic schema: core columns map to
-        first-class fields, everything else folds into a JSON attributes column, so a new
-        source format loads without a migration. Identity is a <strong>hashed dedup key</strong>
-        derived from normalized columns, so the bulk importer and the incremental monthly
-        fetcher agree on what counts as the same record and re-running a load is idempotent.
-        Matching is exact-key first, then a PostgreSQL <strong>trigram similarity</strong>
-        fallback bucketed by brand, scale and packaging — so variant spellings of one item
-        resolve to a single row.</p>
-      </article>
-
-      <article class="card">
-        <h3>Two-stage AI vision &amp; valuation</h3>
-        <p class="stack">Python · Gemini · OpenAI · Claude · PostgreSQL</p>
-        <p>Stage 1 extracts a structured catalogue card from user photos with no pricing
-        involved; Stage 2 runs a separate web-search-grounded valuation against sold
-        comparables. Splitting them stopped price speculation leaking backwards into
-        identification. The provider is chosen by configuration behind one interface, so the
-        model vendor is a setting rather than a rewrite. Output is schema-constrained JSON
-        with parsing, sanitization, price validation and retry with backoff, so malformed or
-        hallucinated output fails closed instead of reaching the database. A valuation cache
-        keyed on item identity means two users scanning the same item share one expensive
-        grounded call.</p>
-      </article>
-
-      <article class="card">
-        <h3>Knowledge-base support agent</h3>
-        <p class="stack">Python · Gemini · Celery</p>
-        <p>An AI first responder on support conversations, running off the request thread.
-        Grounded strictly on a cached knowledge base built from the FAQ table and legal
-        documents, with a bounded prompt and bounded history to keep token cost predictable.
-        It returns a structured <code>{answer, escalate}</code> decision and hands off to a
-        human automatically for anything account-specific, financial or sensitive — the
-        safety boundary is enforced by the schema, not merely requested in the prompt.</p>
-      </article>
-
-      <article class="card">
-        <h3>Time-decayed trending</h3>
-        <p class="stack">Redis · Django · PostgreSQL</p>
-        <p>Lifetime view counters mean a listing that collected views over three weeks
-        always beats one that collected the same number yesterday. This keeps rolling
-        counters in <strong>one Redis hash per hour</strong> rather than per listing, so
-        recomputing the whole site costs a fixed number of reads no matter how large the
-        catalogue grows. Every entry point swallows its own exceptions: a Redis outage
-        degrades the ranking to "no recent data" and falls back to lifetime rates, and can
-        never break the request that was recording the view.</p>
-      </article>
-
-      <article class="card">
-        <h3>Index options time-series analysis</h3>
-        <p class="stack">pandas · NumPy · Kite Connect API</p>
-        <p>Analysis over <strong>minute-bar Nifty and Sensex data spanning 2018–2025</strong>
-        — roughly 1,800 trading days of intraday series — developing and evaluating a
-        strike-bucket options strategy. Ingests the instrument master via API, filters and
-        types it, and merges it against a constructed strike/expiry frame to resolve
-        tradeable instruments. Indicator state carries forward through a cache between runs
-        so signals stay consistent across restarts.</p>
-      </article>
+      </div>
+      <div>
+        <h3>Rarità <a href="https://raritaclub.com" rel="noopener">raritaclub.com ↗</a></h3>
+        <p>The collectibles marketplace behind the web site and the iOS/Android app. My work is the Django backend on this page: the bid engine, trending, the catalogue ETL and the AI layer.</p>
+        <p class="stack">Django 5 · DRF · Channels · Redis · Celery · PostgreSQL · React Native (Expo) client</p>
+      </div>
+      <div>
+        <h3>Index options research</h3>
+        <p>pandas and NumPy over minute-bar Nifty and Sensex data from 2018 to 2025, roughly 1,800 trading days, developing and evaluating a strike-bucket options strategy via the Kite Connect API.</p>
+        <p class="stack">pandas · NumPy · Kite Connect</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>Stack</h2>
-    <dl class="stack-list">
-      <dt>Languages</dt>
-      <dd>Python · SQL · JavaScript · TypeScript · Lua <span class="muted">(Redis scripting)</span></dd>
-      <dt>Data</dt>
-      <dd>PostgreSQL · pgvector · TimescaleDB · ETL design · data modelling · deduplication &amp; entity resolution · query optimization &amp; indexing · pandas · NumPy</dd>
-      <dt>Backend</dt>
-      <dd>Django · Django REST Framework · FastAPI · Django Channels · Celery · Celery Beat · Redis · REST · WebSockets · JWT auth</dd>
-      <dt>AI</dt>
-      <dd>RAG · embeddings · vector search · OpenAI API · Gemini API · structured output · tool calling · prompt design · cost &amp; quota control</dd>
-      <dt>Infrastructure</dt>
-      <dd>Docker · Linux · Nginx · Gunicorn · Google Cloud Platform · Azure Blob Storage · Cloudflare · Git · Sentry</dd>
-      <dt>Frontend</dt>
-      <dd>React · Next.js · React Native (Expo) · Tailwind CSS</dd>
-    </dl>
-    <p class="note">
-      What I don't claim: no LangChain or LlamaIndex, and no model training — I build
-      against provider SDKs with my own orchestration. No Kubernetes or Terraform. No
-      Airflow, dbt or Spark. No production Java or Go. I'd rather state a gap than have it
-      found in a screening call.
-    </p>
-  </section>
-
-  <section>
-    <h2>Background</h2>
-    <p class="prose">
-      B.Tech, Gyan Ganga Institute of Technology and Sciences, 2023 — CGPA 8.34.
-      Data Analytics Virtual Internship (Trainity, 2023). Technology Virtual Experience
-      Program (Deloitte via Forage, 2023).
-    </p>
-    <p class="note">
-      Source code for the work above lives in private repositories, so this page describes
-      the systems rather than linking them. The one thing you can go and use right now is
-      <a href="https://drops.raritaclub.com" rel="noopener">drops.raritaclub.com</a>.
-    </p>
-  </section>
+<!-- ═══ Stack ════════════════════════════════════════════════════════════ -->
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="route"><b>GET</b> /stack</p>
+      <h2>What I reach for.</h2>
+    </div>
+    <div class="stack-grid">
+      <dl class="stack-list reveal">
+        <dt>languages</dt><dd>Python · SQL · JavaScript · TypeScript · Lua (Redis scripting)</dd>
+        <dt>data</dt><dd>PostgreSQL · pgvector · TimescaleDB · ETL design · data modelling · dedup &amp; entity resolution · query tuning · pandas · NumPy</dd>
+        <dt>backend</dt><dd>Django · DRF · FastAPI · Channels · Celery · Celery Beat · Redis · REST · WebSockets · SSE · JWT auth</dd>
+        <dt>ai</dt><dd>RAG · embeddings · vector search · OpenAI · Gemini · structured output · tool calling · cost &amp; quota control</dd>
+        <dt>infra</dt><dd>Docker · Linux · Nginx · Gunicorn · GCP · Azure Blob · Cloudflare · Sentry · Git</dd>
+        <dt>frontend</dt><dd>React · Next.js · React Native (Expo) · Tailwind CSS</dd>
+      </dl>
+      <aside class="honest reveal">
+        <h3>What I don't claim.</h3>
+        <ul>
+          <li>LangChain or LlamaIndex (I orchestrate against provider SDKs)</li>
+          <li>Model training or fine-tuning</li>
+          <li>Kubernetes, Terraform</li>
+          <li>Airflow, dbt, Spark</li>
+          <li>Production Java or Go</li>
+        </ul>
+        <p>I'd rather state a gap than have it found in a screening call.</p>
+      </aside>
+    </div>
+  </div>
+</section>
 
 </main>
 
-<footer>
+<!-- ═══ Contact ══════════════════════════════════════════════════════════ -->
+<footer class="contact" id="contact">
   <div class="wrap">
-    <p>
-      <a href="mailto:upipersaniya@gmail.com">upipersaniya@gmail.com</a> ·
-      <a href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">linkedin.com/in/utsavpipersaniya</a> ·
-      <a href="https://drops.raritaclub.com" rel="noopener">drops.raritaclub.com</a>
-    </p>
-    <p class="muted">Open to remote roles across India, and hybrid or on-site in Pune, Indore or Gurugram. 30-day notice.</p>
+    <p class="route"><b>GET</b> /hire · 200 OK</p>
+    <a class="big-mail" href="mailto:upipersaniya@gmail.com">upipersaniya<br>@gmail.com</a>
+    <div class="contact-meta">
+      <span>Available immediately</span>
+      <span>Remote across India · hybrid in Pune, Indore or Gurugram</span>
+      <a href="https://linkedin.com/in/utsavpipersaniya" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <p class="fine">B.Tech, Gyan Ganga Institute of Technology and Sciences, 2023 (CGPA 8.34) · Jabalpur, India. Source for the work above is in private repositories, so this page shows the systems instead of linking them. The demos are written from scratch for this page.</p>
   </div>
 </footer>
 
+<script src="app.js" defer></script>
 </body>
 </html>
