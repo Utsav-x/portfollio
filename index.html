@@ -30,12 +30,12 @@
   <div class="wrap">
     <a class="mark" href="#top">utsav<span>.</span>p</a>
     <nav class="routes" aria-label="Sections">
-      <a href="#bids">Bidding</a>
-      <a href="#etl">ETL</a>
-      <a href="#query">Queries</a>
-      <a href="#ai">AI</a>
-      <a href="#shipped">Shipped</a>
+      <a href="#snapshot">Snapshot</a>
+      <a href="#ask">Ask</a>
+      <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
+      <a href="#systems">Systems</a>
+      <a href="#shipped">Work</a>
     </nav>
     <a class="btn tang sm hire-top" href="#contact">Hire me</a>
     <button class="theme-btn" id="theme" type="button" aria-label="Toggle dark mode">
@@ -52,22 +52,23 @@
     <div>
       <p class="avail"><span class="pulse" aria-hidden="true"></span> Available immediately · open to full-time &amp; freelance</p>
       <h1 class="name" aria-label="Utsav Pipersaniya"><span data-split>Utsav</span><span data-split>Pipersaniya</span></h1>
-      <p class="headline" id="headline">Backend engineer. I build systems that move <em>money and data</em> and stay correct under load.</p>
+      <p class="role-line" id="headline">Backend Engineer <span>· Python, Django, PostgreSQL</span></p>
       <p class="sub" id="sub">
-        <b>2 yrs 8 mos</b> shipping production Python. I built a <b>race-safe real-time bidding engine</b>,
-        an <b>ETL pipeline that brought in 5 clients</b>, cut <b>API response times by ~50%</b>, and shipped
-        <b>RAG over pgvector</b> to real users.
+        I build the systems behind products: <b>Django APIs</b>, <b>PostgreSQL</b> databases that stay fast,
+        <b>data pipelines</b> that run on their own, <b>real-time</b> features, and <b>LLM features</b> grounded in real data.
+        Production Python since December 2023, at an ESG reporting platform and a collectibles marketplace.
       </p>
       <div class="cta">
-        <a class="btn tang" href="#contact">Hire me →</a>
+        <a class="btn tang" href="#contact">Get in touch →</a>
+        <a class="btn ghost-light" href="#systems">See my work</a>
         <a class="btn ghost-light" id="resume-link" href="assets/resume/Utsav_Pipersaniya_Backend_Engineer.pdf" download>Résumé PDF ↓</a>
-        <a class="btn ghost-light" href="https://drops.raritaclub.com" rel="noopener">Live product ↗</a>
       </div>
-      <div class="facts-row">
-        <span><b>Python</b> · Django · DRF</span>
-        <span><b>PostgreSQL</b> · Redis · Celery</span>
-        <span>Remote India · Pune · Indore · Gurugram</span>
-      </div>
+      <dl class="stats">
+        <div><dt id="yrs">2y 10m</dt><dd>production Python</dd></div>
+        <div><dt>~50%</dt><dd>faster APIs, measured</dd></div>
+        <div><dt>5</dt><dd>clients won by my ETL</dd></div>
+        <div><dt>2</dt><dd>AI systems in production</dd></div>
+      </dl>
     </div>
 
     <div class="proof" id="proof" aria-label="What I've built, live">
@@ -106,8 +107,246 @@
   </div>
 </section>
 
+<!-- ═══ Snapshot: the first-call answers ═════════════════════════════════ -->
+<section class="section snap" id="snapshot">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2>The short version.</h2>
+      <p class="lede">Everything a recruiter usually asks in the first call, in one place.</p>
+    </div>
+    <div class="snap-grid">
+      <dl class="snap-facts reveal">
+        <div><dt>Current role</dt><dd>Freelance Backend Engineer, Rarità Technologies</dd></div>
+        <div><dt>Experience</dt><dd>2 yrs 8 mos full-time, plus freelance since Jul 2026</dd></div>
+        <div><dt>Core stack</dt><dd>Python, Django, DRF, PostgreSQL, Redis, Celery</dd></div>
+        <div><dt>Also strong in</dt><dd>ETL pipelines, real-time WebSockets, RAG over pgvector</dd></div>
+        <div><dt>Last full-time role</dt><dd>Backend Engineer, Sustainext (ESG SaaS), Dec 2023 to Jul 2026</dd></div>
+        <div><dt>Availability</dt><dd><span class="pulse" aria-hidden="true"></span> Immediately, no notice period</dd></div>
+        <div><dt>Location</dt><dd>Jabalpur, India (IST, UTC+5:30)</dd></div>
+        <div><dt>Education</dt><dd>B.Tech, GGITS Jabalpur, 2023 · CGPA 8.34</dd></div>
+      </dl>
+      <aside class="looking reveal">
+        <h3>What I'm looking for</h3>
+        <p>A team that needs someone to own the backend and data side, and add AI where it actually helps.</p>
+        <ul>
+          <li>Backend, Python, Data or AI engineer roles</li>
+          <li>Full-time, or freelance and contract builds</li>
+          <li>Remote in India, or hybrid in Pune, Indore or Gurugram</li>
+        </ul>
+        <a class="btn tang" href="#contact">Start a conversation →</a>
+      </aside>
+    </div>
+    <div class="worked reveal">
+      <span class="lbl">Worked at</span>
+      <span class="co"><b>Sustainext</b><small>ESG reporting platform</small></span>
+      <span class="co"><b>Rarità Technologies</b><small>collectibles marketplace, Gurugram</small></span>
+      <span class="co"><b>RaritaDrops</b><small>built solo, live at drops.raritaclub.com</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Ask about me: pre-written answers, typed out ═════════════════════ -->
+<section class="section band-paper2" id="ask">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2>Ask about me.</h2>
+      <p class="lede">The questions I get asked most. Pick one and the answer types itself out.</p>
+    </div>
+    <div class="ask reveal">
+      <div class="ask-qs" role="group" aria-label="Questions">
+        <button type="button" data-a="stack" aria-pressed="true">What's your strongest stack?</button>
+        <button type="button" data-a="ai" aria-pressed="false">Have you shipped AI or LLM features?</button>
+        <button type="button" data-a="data" aria-pressed="false">Have you done data engineering?</button>
+        <button type="button" data-a="hard" aria-pressed="false">What's the hardest problem you've solved?</button>
+        <button type="button" data-a="join" aria-pressed="false">When can you join?</button>
+        <button type="button" data-a="code" aria-pressed="false">Can I see your code?</button>
+        <button type="button" data-a="cv" aria-pressed="false">Can I see your CV?</button>
+      </div>
+      <div class="chat">
+        <div class="chat-top"><span class="ava" aria-hidden="true">U</span><span><b>Utsav's quick answers</b><small>pre-written by me, typed out like a chat</small></span><span class="on"><i></i> online</span></div>
+        <div class="chat-body" aria-live="polite">
+          <p class="msg me" id="ask-q">What's your strongest stack?</p>
+          <div class="msg them" id="ask-a"></div>
+        </div>
+        <p class="chat-foot">Want the full picture? <a href="#contact">Message me</a> or grab the <a id="resume-link-3" href="assets/resume/Utsav_Pipersaniya_Backend_Engineer.pdf" download>résumé PDF</a>.</p>
+      </div>
+      <template id="answers">
+        <div data-a="stack">Python with <b>Django and DRF on PostgreSQL</b>, with Redis and Celery around it. That has been my daily work since December 2023: 100+ production endpoints at Sustainext, and the bid engine, trending and catalogue ETL at Rarità.</div>
+        <div data-a="ai">Yes, two systems in production. <b>Sustainext Chat</b> is RAG over pgvector with OpenAI that also queries live platform data. At Rarità I built two-stage vision extraction and a support agent that must return <code>{answer, escalate}</code>. I orchestrate directly against provider SDKs, not LangChain. <a href="#ai">See it route ↓</a></div>
+        <div data-a="data">Yes. The <b>EZGB pipeline</b> at Sustainext: scheduled extract from a third-party source, pandas and NumPy transforms, validation, and an idempotent load into PostgreSQL, thousands of records per run. <b>It brought in five new clients.</b> At Rarità I built a catalogue importer with dedup keys and trigram fuzzy matching. <a href="#etl">Watch a run ↓</a></div>
+        <div data-a="hard">Making auction bids correct under concurrency. Two bids in the same millisecond could both be told they lead. I moved acceptance into <b>one atomic Redis Lua script</b> with sequence numbers, and drain to Postgres idempotently so a crash can't duplicate a row. <a href="#bids">Break it yourself ↓</a></div>
+        <div data-a="join"><b>Immediately.</b> No notice period. Full-time or contract; remote anywhere in India, or hybrid in Pune, Indore or Gurugram.</div>
+        <div data-a="code">The repos are private client work, so this page shows the systems instead: walkthroughs and simulators I wrote from scratch, plus products you can open right now, <a href="https://drops.raritaclub.com" rel="noopener">drops.raritaclub.com ↗</a> and <a href="https://raritaclub.com" rel="noopener">raritaclub.com ↗</a>. Happy to walk through real code on a call.</div>
+        <div data-a="cv">Sure. Pick the one closest to your role: <a href="assets/resume/Utsav_Pipersaniya_Backend_Engineer.pdf" download>Backend ↓</a> · <a href="assets/resume/Utsav_Pipersaniya_Data_Engineer.pdf" download>Data ↓</a> · <a href="assets/resume/Utsav_Pipersaniya_AI_Engineer.pdf" download>AI ↓</a></div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Skills, mapped ═══════════════════════════════════════════════════ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2>Skills, mapped.</h2>
+      <p class="lede">Four areas. Pick one to see the tools, where I used each, and a demo of it working.</p>
+    </div>
+    <div class="skills reveal">
+      <div class="seg skill-tabs" role="tablist" aria-label="Skill areas">
+        <button type="button" role="tab" aria-selected="true" aria-pressed="true" data-k="0">Backend &amp; APIs</button>
+        <button type="button" role="tab" aria-selected="false" aria-pressed="false" data-k="1">Data &amp; pipelines</button>
+        <button type="button" role="tab" aria-selected="false" aria-pressed="false" data-k="2">AI &amp; LLMs</button>
+        <button type="button" role="tab" aria-selected="false" aria-pressed="false" data-k="3">Infra &amp; frontend</button>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-panels">
+          <div class="skill-panel on" role="tabpanel" data-k="0">
+            <p class="skill-desc">My core work since 2023. REST APIs, real-time features, background processing and caching for a B2B SaaS and a live marketplace.</p>
+            <ul class="tools">
+              <li><b>Python</b><span>every project, daily since 2023</span></li>
+              <li><b>Django · DRF</b><span>100+ production endpoints at Sustainext</span></li>
+              <li><b>Channels · WebSockets</b><span>live bidding and leaderboards at Rarità</span></li>
+              <li><b>Celery · Celery Beat</b><span>task fleet that cut long workloads ~60%</span></li>
+              <li><b>Redis</b><span>caching, the Lua bid engine, trending</span></li>
+              <li><b>FastAPI · JWT auth</b><span>smaller services and auth</span></li>
+            </ul>
+            <a class="proof-link" href="#bids"><span>01</span> See the bid engine handle a race ↓</a>
+          </div>
+          <div class="skill-panel" role="tabpanel" data-k="1" hidden>
+            <p class="skill-desc">Pipelines that run unattended and never corrupt a load, and databases tuned by reading the query plan.</p>
+            <ul class="tools">
+              <li><b>PostgreSQL</b><span>indexing and EXPLAIN, ~50% faster APIs</span></li>
+              <li><b>pandas · NumPy</b><span>EZGB transforms at Sustainext</span></li>
+              <li><b>ETL design</b><span>scheduled, validated, idempotent upserts</span></li>
+              <li><b>Entity resolution</b><span>dedup keys and pg_trgm fuzzy matching</span></li>
+              <li><b>SSE</b><span>live pipeline progress in the browser</span></li>
+              <li><b>Data modelling</b><span>in-house emission-factor database</span></li>
+            </ul>
+            <a class="proof-link" href="#etl"><span>02</span> Watch a pipeline run ↓</a>
+          </div>
+          <div class="skill-panel" role="tabpanel" data-k="2" hidden>
+            <p class="skill-desc">LLM features that answer from real data or hand off to a human, with cost and failure modes designed in.</p>
+            <ul class="tools">
+              <li><b>pgvector · embeddings</b><span>retrieval for Sustainext Chat</span></li>
+              <li><b>OpenAI API · tool calling</b><span>production RAG on live platform data</span></li>
+              <li><b>Gemini vision</b><span>two-stage catalogue extraction at Rarità</span></li>
+              <li><b>Structured output</b><span>JSON schemas that fail closed</span></li>
+              <li><b>Cost control</b><span>bounded prompts, shared caches, retries</span></li>
+            </ul>
+            <a class="proof-link" href="#ai"><span>04</span> See a question get routed ↓</a>
+          </div>
+          <div class="skill-panel" role="tabpanel" data-k="3" hidden>
+            <p class="skill-desc">I deploy and run what I build, and can ship the frontend for it when needed.</p>
+            <ul class="tools">
+              <li><b>Docker · Gunicorn · Nginx</b><span>Linux deployments behind Cloudflare</span></li>
+              <li><b>GCP · Azure Blob</b><span>hosting and file storage</span></li>
+              <li><b>Sentry · Git</b><span>error tracking and everyday workflow</span></li>
+              <li><b>Next.js 15 · React 19</b><span>the RaritaDrops frontend, built solo</span></li>
+              <li><b>Tailwind CSS</b><span>UI styling</span></li>
+            </ul>
+            <a class="proof-link" href="#shipped"><span>05</span> Open what's live ↓</a>
+          </div>
+        </div>
+        <aside class="honest">
+          <h3>What I don't claim.</h3>
+          <ul>
+            <li>LangChain or LlamaIndex (I use provider SDKs)</li>
+            <li>Model training or fine-tuning</li>
+            <li>Kubernetes, Terraform</li>
+            <li>Airflow, dbt, Spark</li>
+            <li>Production Java or Go</li>
+          </ul>
+          <p>I'd rather state a gap than have it found in a screening call.</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Experience ═══════════════════════════════════════════════════════ -->
+<section class="section band-paper2" id="experience">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2>Where I've worked.</h2>
+      <p class="lede">Two roles since 2023, newest first.</p>
+    </div>
+    <ol class="timeline">
+      <li class="reveal">
+        <div class="when"><span>Jul 2026 to now · remote</span><b>Freelance Backend Engineer</b><i>Rarità Technologies, Gurugram</i></div>
+        <div class="what">
+          <ul>
+            <li>Built the Redis bid engine: one atomic Lua script per bid, integer-paise money, sequence numbers, idempotent drains to Postgres.</li>
+            <li>Built time-decayed trending over hourly Redis hashes, with fixed recompute cost and graceful fallback.</li>
+            <li>Built the catalogue ETL: normalize, hash dedup keys, upsert incrementally, and fuzzy-match with trigram similarity.</li>
+            <li>Built the AI layer: provider-agnostic vision extraction and a knowledge-base-grounded support agent.</li>
+            <li>Built and run RaritaDrops solo, end to end: Django, Channels, Celery, Next.js.</li>
+          </ul>
+          <div class="chips"><span class="chip">Django 5</span><span class="chip">Channels</span><span class="chip">Redis · Lua</span><span class="chip">Celery</span><span class="chip">PostgreSQL</span><span class="chip">Gemini</span><span class="chip">Next.js</span></div>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="when"><span>Dec 2023 to Jul 2026 · 2 yrs 8 mos</span><b>Backend Engineer</b><i>Sustainext, ESG reporting platform</i></div>
+        <div class="what">
+          <ol class="ledger" id="ledger">
+            <li class="open">
+              <button type="button" aria-expanded="true"><span class="t">EZGB ETL pipeline<small>Third-party source to our Postgres, end to end and unattended. Brought in five clients.</small></span><span class="plus" aria-hidden="true"></span></button>
+              <div class="body"><div>
+                <p>Extract from an external source, transform with pandas and NumPy, load into PostgreSQL on a Celery Beat schedule, thousands of records per run, with a data-quality layer so a bad upstream payload never corrupts a load. <span class="flag">It brought in five more clients.</span> Live progress streams over Server-Sent Events, my call over short polling.</p>
+                <div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Celery Beat</span><span class="chip">SSE</span></div>
+              </div></div>
+            </li>
+            <li>
+              <button type="button" aria-expanded="false"><span class="t">Sustainext Chat<small>Production RAG over pgvector that also reads live platform data.</small></span><span class="plus" aria-hidden="true"></span></button>
+              <div class="body"><div>
+                <p>Retrieval over pgvector with OpenAI models, plus tool calls into live records so answers reflect the customer's real data. Orchestration written directly against the provider SDK to keep latency and token cost under control.</p>
+                <div class="chips"><span class="chip">pgvector</span><span class="chip">OpenAI API</span><span class="chip">tool calling</span></div>
+              </div></div>
+            </li>
+            <li>
+              <button type="button" aria-expanded="false"><span class="t">Performance work<small>~50% faster APIs; ~60% shorter long-running workloads.</small></span><span class="plus" aria-hidden="true"></span></button>
+              <div class="body"><div>
+                <p>Postgres indexing, N+1 removal and ORM tuning cut API response times by about half. Moving long-running work onto a Celery worker fleet backed by Redis cut those workloads by about 60%. Both measured before and after. I also built the Redis caching layer and its invalidation.</p>
+                <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">Django ORM</span><span class="chip">Celery</span><span class="chip">Redis</span></div>
+              </div></div>
+            </li>
+            <li>
+              <button type="button" aria-expanded="false"><span class="t">Emission-factor database<small>An in-house, Climatiq-style factor store that cut third-party API spend.</small></span><span class="plus" aria-hidden="true"></span></button>
+              <div class="body"><div>
+                <p>Calculations used to call a paid external factor API. Our own factor database resolves them locally, reducing third-party costs and removing a network dependency from every calculation.</p>
+                <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">data modelling</span></div>
+              </div></div>
+            </li>
+            <li>
+              <button type="button" aria-expanded="false"><span class="t">Analysis engine &amp; 100+ endpoints<small>Emission calculations, DRF APIs, Azure Blob, Docker, Nginx, Cloudflare.</small></span><span class="plus" aria-hidden="true"></span></button>
+              <div class="body"><div>
+                <p>Automated emission calculation and aggregation across periods, entities and categories, feeding the disclosures customers publish. Over a hundred production DRF endpoints, deployed on Linux with Docker, Gunicorn and Nginx behind Cloudflare.</p>
+                <div class="chips"><span class="chip">DRF</span><span class="chip">Azure Blob</span><span class="chip">Docker</span><span class="chip">Nginx</span></div>
+              </div></div>
+            </li>
+          </ol>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══ Systems: the proof chapters ══════════════════════════════════════ -->
+<section class="section sys-intro" id="systems">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <h2>Don't take my word for it.</h2>
+      <p class="lede">Watch four systems I built play out as you scroll, then try to break two of them. Jump to one, or just keep scrolling.</p>
+    </div>
+    <ol class="sys-index reveal">
+      <li><a href="#bids"><span class="no">01</span><b>Real-time bidding</b><small>Two bids, same millisecond, one winner</small><em>Redis · Lua · Rarità</em></a></li>
+      <li><a href="#etl"><span class="no">02</span><b>Data pipeline</b><small>Messy records in, zero corrupted rows out</small><em>pandas · Postgres · Sustainext</em></a></li>
+      <li><a href="#query"><span class="no">03</span><b>Query optimization</b><small>Half the response time, measured</small><em>Django ORM · EXPLAIN</em></a></li>
+      <li><a href="#ai"><span class="no">04</span><b>Applied AI</b><small>Answers from real data, or a handoff</small><em>pgvector · OpenAI · Gemini</em></a></li>
+    </ol>
+  </div>
+</section>
+
 <!-- ═══ 01 Bidding: scroll story ═════════════════════════════════════════ -->
-<section class="story" id="bids" style="--len:3.6" data-story="bid">
+<section class="story" id="bids" style="--len:3.6" data-story="bid" data-nav="systems">
   <div class="stage"><div class="wrap">
     <div class="story-copy">
       <p class="kicker"><span class="no">01</span> Real-time bidding · Rarità</p>
@@ -165,7 +404,7 @@
 </section>
 
 <!-- ═══ 02 ETL: scroll story ═════════════════════════════════════════════ -->
-<section class="story" id="etl" style="--len:3.6" data-story="etl">
+<section class="story" id="etl" style="--len:3.6" data-story="etl" data-nav="systems">
   <div class="stage"><div class="wrap">
     <div class="story-copy">
       <p class="kicker"><span class="no">02</span> Data pipeline · Sustainext</p>
@@ -219,7 +458,7 @@
 </section>
 
 <!-- ═══ 03 Query optimization: scroll story (dark) ══════════════════════ -->
-<section class="story dark" id="query" style="--len:3.6" data-story="query">
+<section class="story dark" id="query" style="--len:3.6" data-story="query" data-nav="systems">
   <div class="stage"><div class="wrap">
     <div class="story-copy">
       <p class="kicker"><span class="no">03</span> Query optimization · Sustainext</p>
@@ -248,7 +487,7 @@
 </section>
 
 <!-- ═══ 04 AI ════════════════════════════════════════════════════════════ -->
-<section class="section" id="ai">
+<section class="section" id="ai" data-nav="systems">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="kicker"><span class="no">04</span> Applied AI · Sustainext &amp; Rarità</p>
@@ -308,7 +547,7 @@
 <section class="section band-paper2" id="shipped">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="kicker"><span class="no">05</span> In production now</p>
+      <p class="kicker"><span class="no">05</span> Work · in production now</p>
       <h2>Things you can open right now.</h2>
     </div>
     <div class="stage-shots reveal">
@@ -357,86 +596,6 @@
         <p>pandas and NumPy over minute-bar Nifty and Sensex data from 2018 to 2025 (about 1,800 trading days), building and evaluating a strike-bucket options strategy via Kite Connect.</p>
         <p class="stack">pandas · NumPy · Kite Connect</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 06 Experience ════════════════════════════════════════════════════ -->
-<section class="section" id="experience">
-  <div class="wrap xp-grid">
-    <div class="xp-side reveal">
-      <p class="kicker"><span class="no">06</span> Experience</p>
-      <h2>Where I've done it.</h2>
-      <div class="job"><b>Rarità Technologies</b><span>Freelance Backend Engineer · Jul 2026 to now · Gurugram (remote)</span><p>Bid engine, trending, catalogue ETL and the AI layer for a collectibles marketplace.</p></div>
-      <div class="job"><b>Sustainext</b><span>Backend Engineer · Dec 2023 to Jul 2026 · ESG reporting platform</span><p>Owned several distinct systems. Tap a row for detail.</p></div>
-    </div>
-    <ol class="ledger reveal" id="ledger">
-      <li class="open">
-        <button type="button" aria-expanded="true"><span class="n">sustainext</span><span class="t">EZGB ETL pipeline<small>Third-party source to our Postgres, end to end and unattended.</small></span><span class="plus" aria-hidden="true"></span></button>
-        <div class="body"><div>
-          <p>Extract from an external source, transform with pandas and NumPy, load into PostgreSQL on a Celery Beat schedule, thousands of records per run, with a data-quality layer so a bad upstream payload never corrupts a load. <span class="flag">It brought in five more clients.</span> Live progress streams over Server-Sent Events, my call over short polling.</p>
-          <div class="chips"><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Celery Beat</span><span class="chip">SSE</span></div>
-        </div></div>
-      </li>
-      <li>
-        <button type="button" aria-expanded="false"><span class="n">sustainext</span><span class="t">Sustainext Chat<small>Production RAG over pgvector that also reads live platform data.</small></span><span class="plus" aria-hidden="true"></span></button>
-        <div class="body"><div>
-          <p>Retrieval over pgvector with OpenAI models, plus tool calls into live records so answers reflect the customer's real data. Orchestration written directly against the provider SDK to keep latency and token cost under control.</p>
-          <div class="chips"><span class="chip">pgvector</span><span class="chip">OpenAI API</span><span class="chip">tool calling</span></div>
-        </div></div>
-      </li>
-      <li>
-        <button type="button" aria-expanded="false"><span class="n">sustainext</span><span class="t">Performance work<small>~50% faster APIs; ~60% shorter long-running workloads.</small></span><span class="plus" aria-hidden="true"></span></button>
-        <div class="body"><div>
-          <p>Postgres indexing, N+1 removal and ORM tuning cut API response times by about half. Moving long-running work onto a Celery worker fleet backed by Redis cut those workloads by about 60%. Both measured before and after. I also built the Redis caching layer and its invalidation.</p>
-          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">Django ORM</span><span class="chip">Celery</span><span class="chip">Redis</span></div>
-        </div></div>
-      </li>
-      <li>
-        <button type="button" aria-expanded="false"><span class="n">sustainext</span><span class="t">Emission-factor database<small>An in-house, Climatiq-style factor store that cut third-party API spend.</small></span><span class="plus" aria-hidden="true"></span></button>
-        <div class="body"><div>
-          <p>Calculations used to call a paid external factor API. Our own factor database resolves them locally, reducing third-party costs and removing a network dependency from every calculation.</p>
-          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">data modelling</span></div>
-        </div></div>
-      </li>
-      <li>
-        <button type="button" aria-expanded="false"><span class="n">sustainext</span><span class="t">Analysis engine &amp; 100+ endpoints<small>Emission calculations, DRF APIs, Azure Blob, Docker, Nginx, Cloudflare.</small></span><span class="plus" aria-hidden="true"></span></button>
-        <div class="body"><div>
-          <p>Automated emission calculation and aggregation across periods, entities and categories, feeding the disclosures customers publish. Over a hundred production DRF endpoints, deployed on Linux with Docker, Gunicorn and Nginx behind Cloudflare.</p>
-          <div class="chips"><span class="chip">DRF</span><span class="chip">Azure Blob</span><span class="chip">Docker</span><span class="chip">Nginx</span></div>
-        </div></div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ═══ Stack ════════════════════════════════════════════════════════════ -->
-<section class="section band-night" id="stack">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="kicker"><span class="no">07</span> Stack</p>
-      <h2>What I reach for.</h2>
-    </div>
-    <div class="stack-grid">
-      <dl class="stack-list reveal">
-        <dt>languages</dt><dd>Python · SQL · JavaScript · TypeScript · Lua (Redis scripting)</dd>
-        <dt>data</dt><dd>PostgreSQL · pgvector · TimescaleDB · ETL design · data modelling · dedup &amp; entity resolution · query tuning · pandas · NumPy</dd>
-        <dt>backend</dt><dd>Django · DRF · FastAPI · Channels · Celery · Celery Beat · Redis · REST · WebSockets · SSE · JWT auth</dd>
-        <dt>ai</dt><dd>RAG · embeddings · vector search · OpenAI · Gemini · structured output · tool calling · cost &amp; quota control</dd>
-        <dt>infra</dt><dd>Docker · Linux · Nginx · Gunicorn · GCP · Azure Blob · Cloudflare · Sentry · Git</dd>
-        <dt>frontend</dt><dd>React · Next.js · React Native (Expo) · Tailwind CSS</dd>
-      </dl>
-      <aside class="honest reveal">
-        <h3>What I don't claim.</h3>
-        <ul>
-          <li>LangChain or LlamaIndex (I orchestrate against provider SDKs)</li>
-          <li>Model training or fine-tuning</li>
-          <li>Kubernetes, Terraform</li>
-          <li>Airflow, dbt, Spark</li>
-          <li>Production Java or Go</li>
-        </ul>
-        <p>I'd rather state a gap than have it found in a screening call.</p>
-      </aside>
     </div>
   </div>
 </section>

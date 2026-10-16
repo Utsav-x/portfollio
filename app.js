@@ -28,20 +28,22 @@
 
   /* ── Role-tailored links: ?role=data | ai | backend ─────────────────── */
   const ROLES = {
-    data: { h: 'Data engineer. I build pipelines that run unattended and <em>never corrupt a load</em>.', pdf: 'Utsav_Pipersaniya_Data_Engineer.pdf', order: ['data', 'backend', 'backend', 'ai'] },
-    ai: { h: 'AI engineer. I ship LLM features <em>grounded in real data</em>, not guesses.', pdf: 'Utsav_Pipersaniya_AI_Engineer.pdf', order: ['ai', 'backend', 'data', 'backend'] },
+    data: { h: 'Data Engineer <span>· Python, pandas, PostgreSQL</span>', pdf: 'Utsav_Pipersaniya_Data_Engineer.pdf' },
+    ai: { h: 'AI Engineer <span>· RAG, pgvector, Python</span>', pdf: 'Utsav_Pipersaniya_AI_Engineer.pdf' },
   };
   const params = new URLSearchParams(location.search);
   const role = ROLES[params.get('role')];
   if (role) {
     $('#headline').innerHTML = role.h;
-    ['#resume-link', '#resume-link-2'].forEach((s) => ($(s).href = 'assets/resume/' + role.pdf));
+    ['#resume-link', '#resume-link-2', '#resume-link-3'].forEach((s) => ($(s).href = 'assets/resume/' + role.pdf));
     const tiles = $$('#proof .tile');
     const prio = { data: { data: 0, backend: 1, ai: 3 }, ai: { ai: 0, backend: 1, data: 2 } }[params.get('role')];
     tiles.forEach((t, i) => (t.style.order = prio[t.dataset.order] * 10 + i));
     if (params.get('role') === 'data') tiles.forEach((t) => t.dataset.order === 'data' && t.classList.remove('wide'));
   }
   $('#came-from').value = [params.get('role') && 'role=' + params.get('role'), params.get('ref') && 'ref=' + params.get('ref'), document.referrer && 'referrer=' + document.referrer].filter(Boolean).join(' · ') || 'direct';
+
+  { const m = (new Date().getFullYear() - 2023) * 12 + new Date().getMonth() - 11; $('#yrs').textContent = `${Math.floor(m / 12)}y ${m % 12}m`; }
 
   /* ── Name: letter-by-letter rise ───────────────────────────────────── */
   let d = 0;
@@ -55,7 +57,7 @@
   $$('.reveal').forEach((n) => io.observe(n));
   const navLinks = $$('.routes a');
   const navIO = new IntersectionObserver((es) => es.forEach((e) => {
-    if (e.isIntersecting) navLinks.forEach((a) => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id)));
+    if (e.isIntersecting) navLinks.forEach((a) => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + (e.target.dataset.nav || e.target.id))));
   }), { rootMargin: '-45% 0px -50% 0px' });
   $$('main > section[id]').forEach((s) => navIO.observe(s));
   $$('#ledger > li > button').forEach((b) => b.addEventListener('click', () => {
@@ -606,6 +608,42 @@
         setTimeout(() => setInterval(() => { if (!vis || document.hidden) return; ims[j].classList.remove('on'); j = (j + 1) % ims.length; ims[j].classList.add('on'); }, 3400), k * 1700);
       });
     }
+  }
+
+  /* ══ Ask about me: pre-written answers typed out ═════════════════════ */
+  {
+    const qs = $$('.ask-qs button'), q = $('#ask-q'), a = $('#ask-a');
+    const answers = Object.fromEntries([...$('#answers').content.children].map((n) => [n.dataset.a, n.innerHTML]));
+    const roleCv = role && $('#resume-link').getAttribute('href');
+    let run = 0;
+    const show = async (key, btn) => {
+      const my = ++run;
+      qs.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      q.textContent = btn.textContent;
+      q.classList.remove('pop'); void q.offsetWidth; q.classList.add('pop');
+      const tmp = el('div'); tmp.innerHTML = answers[key];
+      const text = tmp.textContent, cur = el('span', { class: 'cur' });
+      a.classList.add('typing');
+      if (!reduce) {
+        a.textContent = ''; await sleep(380);
+        for (let j = 0; j <= text.length; j += 2) { if (my !== run) return; a.textContent = text.slice(0, j); a.appendChild(cur); await sleep(12); }
+      }
+      if (my !== run) return;
+      a.classList.remove('typing'); a.innerHTML = answers[key];
+      if (roleCv && key === 'cv') a.querySelector(`a[href="${roleCv}"]`)?.classList.add('mark-cv');
+    };
+    qs.forEach((b) => b.addEventListener('click', () => show(b.dataset.a, b)));
+    const once = new IntersectionObserver(([e]) => { if (e.isIntersecting) { once.disconnect(); show('stack', qs[0]); } }, { threshold: 0.4 });
+    once.observe($('.chat'));
+  }
+
+  /* ══ Skills tabs ═════════════════════════════════════════════════════ */
+  {
+    const tabs = $$('.skill-tabs button'), panels = $$('.skill-panel');
+    tabs.forEach((t) => t.addEventListener('click', () => {
+      tabs.forEach((b) => { const on = b === t; b.setAttribute('aria-selected', String(on)); b.setAttribute('aria-pressed', String(on)); });
+      panels.forEach((p) => { const on = p.dataset.k === t.dataset.k; p.hidden = !on; p.classList.toggle('on', on); });
+    }));
   }
 
   /* ══ Hire form (FormSubmit) + view counter (GoatCounter) ════════════ */
